@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.List;
 
+
 public class Lion {
 
     private final boolean hasMane;
@@ -14,7 +15,7 @@ public class Lion {
         } else if ("Самка".equals(sex)) {
             hasMane = false;
         } else {
-            throw new Exception("Используйте допустимые значения пола животного - самей или самка");
+            throw new Exception("Используйте допустимые значения пола животного - самец или самка");
         }
     }
 
