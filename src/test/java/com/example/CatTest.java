@@ -36,7 +36,7 @@ public class CatTest {
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
         when(feline.eatMeat()).thenReturn(expected);
         List<String> actual = cat.getFood();
-        assertEquals("Метод getFood() класса Cat выполнился с ошибкой", expected, actual);
         verify(feline, times(1)).eatMeat();
+        assertEquals("Метод getFood() класса Cat выполнился с ошибкой", expected, actual);
     }
 }

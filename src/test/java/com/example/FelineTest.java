@@ -1,35 +1,53 @@
 package com.example;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 
+@RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
+    @Spy
+    private Feline feline;
 
     @Test
     public void eatMeat() {
     }
 
     @Test
-    public void getFamily() {
+    public void getFamilyTest() {
+        String expected = "Кошачьи";
+        String actual = feline.getFamily();
+        assertEquals("Метод getFamily() класса Feline вернул неверное значение", expected, actual);
     }
 
     @Test
-    public void getKittens() {
+    public void getKittensWithKittensCount1Return1Test() {
+        int expected = 1;
+        int actual = feline.getKittens();
+        verify(feline, times(1)).getKittens(1);
+        assertEquals("Метод getKittens() класса Feline вернул неверное значение", expected, actual);
     }
 
     @Test
-    public void testGetKittens() {
+    public void getKittensWithKittensCount5Return5Test() {
+        int expected = 5;
+        int actual = feline.getKittens(5);
+        assertEquals(String.format("Метод getKittens(int kittensCount) класса Feline вернул неверное значение при kittensCount=%s", actual),
+                expected, actual);
+    }
+
+    @Test
+    public void getKittensWithKittensCount10Return10Test() {
+        int expected = 10;
+        int actual = feline.getKittens(10);
+        assertEquals(String.format("Метод getKittens(int kittensCount) класса Feline вернул неверное значение при kittensCount=%s", actual),
+                expected, actual);
     }
 }
