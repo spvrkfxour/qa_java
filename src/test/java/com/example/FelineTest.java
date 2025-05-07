@@ -5,19 +5,26 @@ import org.junit.runner.RunWith;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.verify;
 
 
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
+    private final String getFoodArg = "Хищник";
 
     @Spy
     private Feline feline;
 
     @Test
-    public void eatMeat() {
+    public void eatMeat() throws Exception {
+        List<String> expected = List.of("Животные", "Птицы", "Рыба");
+        when(feline.getFood(getFoodArg)).thenReturn(expected);
+        List<String> actual = feline.eatMeat();
+        verify(feline, times(1)).getFood(getFoodArg);
+        assertEquals("Метод eatMeat() класса Feline выполнился с ошибкой", expected, actual);
     }
 
     @Test
