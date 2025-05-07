@@ -16,13 +16,13 @@ import static org.mockito.Mockito.*;
 public class CatTest {
     private Cat cat;
 
+    @Mock
+    Feline feline;
+
     @Before
     public void setUp() {
         this.cat = new Cat(feline);
     }
-
-    @Mock
-    Feline feline;
 
     @Test
     public void getSoundTest() {

@@ -13,7 +13,6 @@ import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
-    private final String getFoodArg = "Хищник";
 
     @Spy
     private Feline feline;
@@ -21,9 +20,9 @@ public class FelineTest {
     @Test
     public void eatMeat() throws Exception {
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
-        when(feline.getFood(getFoodArg)).thenReturn(expected);
+        when(feline.getFood("Хищник")).thenReturn(expected);
         List<String> actual = feline.eatMeat();
-        verify(feline, times(1)).getFood(getFoodArg);
+        verify(feline, times(1)).getFood("Хищник");
         assertEquals("Метод eatMeat() класса Feline выполнился с ошибкой", expected, actual);
     }
 
