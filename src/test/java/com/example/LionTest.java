@@ -72,7 +72,9 @@ public class LionTest {
     @Test
     public void doesHaveManeTest() {
         Assume.assumeFalse("Тест getKittensTest() пропущен, так как конструктор тестового класса выбросил исключение", throwException);
-        assertEquals("Метод doesHaveMane() класса Lion вернул некорректное значение", hasMane, lion.doesHaveMane());
+        boolean expected = hasMane;
+        boolean actual = lion.doesHaveMane();
+        assertEquals("Метод doesHaveMane() класса Lion вернул некорректное значение", expected, actual);
     }
 
     @Test
