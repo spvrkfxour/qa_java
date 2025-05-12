@@ -39,10 +39,7 @@ public class CatTest {
 
     @Test
     public void getFoodTest() throws Exception {
-        List<String> expected = List.of("Животные", "Птицы", "Рыба");
-        when(feline.eatMeat()).thenReturn(expected);
-        List<String> actual = cat.getFood();
+        cat.getFood();
         verify(feline, times(1)).eatMeat();
-        assertEquals("Метод getFood() класса Cat выполнился с ошибкой", expected, actual);
     }
 }

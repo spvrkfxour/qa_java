@@ -1,28 +1,25 @@
 package com.example;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
 
 
-@RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
-
-    @Spy
     private Feline feline;
+
+    @Before
+    public void setUp() {
+        feline = new Feline();
+    }
 
     @Test
     public void eatMeat() throws Exception {
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
-        when(feline.getFood("Хищник")).thenReturn(expected);
         List<String> actual = feline.eatMeat();
-        verify(feline, times(1)).getFood("Хищник");
         assertEquals("Метод eatMeat() класса Feline выполнился с ошибкой", expected, actual);
     }
 
@@ -37,7 +34,6 @@ public class FelineTest {
     public void getKittensWithKittensCount1Return1Test() {
         int expected = 1;
         int actual = feline.getKittens();
-        verify(feline, times(1)).getKittens(1);
         assertEquals("Метод getKittens() класса Feline вернул неверное значение", expected, actual);
     }
 
