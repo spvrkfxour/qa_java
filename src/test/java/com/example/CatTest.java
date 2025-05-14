@@ -6,6 +6,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
@@ -37,6 +39,7 @@ public class CatTest {
 
     @Test
     public void getFoodTest() throws Exception {
+        when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         cat.getFood();
         verify(feline, times(1)).eatMeat();
     }
